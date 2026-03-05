@@ -1,9 +1,14 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { RawMaterialsController } from './raw-materials.controller';
 import { RawMaterialsService } from './raw-materials.service';
 
+import { RawMaterial } from '../../entities/raw-material.entity';
+
 @Module({
+  imports: [TypeOrmModule.forFeature([RawMaterial])],
   controllers: [RawMaterialsController],
-  providers: [RawMaterialsService]
+  providers: [RawMaterialsService],
 })
 export class RawMaterialsModule {}
